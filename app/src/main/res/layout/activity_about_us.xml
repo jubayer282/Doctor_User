@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context=".About_Us">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/sf_ns_text"
+            android:text="@string/about_us_of_our_system"
+            android:gravity="center_horizontal"
+            android:textColor="@color/teal_200"
+            android:textSize="24dp"
+            android:padding="20dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/sf_ns_text"
+        android:text="This is our Android based app. Here, we can using smany activities and ui design. We can build that project, many patient's are not go in the hospital. This app may be easy for the patient. The patient's didn't come to the hospital. They can be easyili get appointment to the doctor's. Here the main concepts of that DAS system, patient can first of all register of system then login the id, see the doctor's list and time sechuding e=when the doctor's is free and also see the details of the doctor's. We also build up using for the AI application of our system. Here, the patient can live chat the doctor's and also the patient's can known which doctor's are best for that department that's mean the patient's can get the suggesstion and live chat to the doctor's. Here, we using for the Admin panel. A admin can monitoring the database of that system and also doctor's add, delete, time scheduling etc. The patient's can get appointment, live chat to the doctor's, suggesstion and also update his/her profile. "
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="normal">
+
+    </TextView>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:fontFamily="@font/sf_ns_text"
+          android:text="Office Location"
+          android:layout_gravity="center"
+          android:textColor="@color/teal_200"
+          android:textStyle="bold"
+          android:textSize="20dp"/>
+
+      <ImageView
+          android:id="@+id/map"
+          android:layout_width="wrap_content"
+          android:layout_height="230dp"
+          android:src="@drawable/bubt"
+          android:layout_marginTop="10dp"
+          android:scaleType="fitXY"
+          android:layout_gravity="center"
+          android:layout_marginBottom="20dp"/>
+      <TextView
+          android:padding="20dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:fontFamily="@font/sf_ns_text"
+          android:text="all right reserved 2023 DAS"
+          android:textColor="@color/primary"
+          android:textSize="15dp"/>
+
+    </LinearLayout>
+
+  </ScrollView>
+
+</LinearLayout>
+
+
+
