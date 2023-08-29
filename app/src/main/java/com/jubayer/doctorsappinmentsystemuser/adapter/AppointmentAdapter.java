@@ -1,4 +1,4 @@
-package com.jubayer.doctorsappinmentsystemuser;
+package com.jubayer.doctorsappinmentsystemuser.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.jubayer.doctorsappinmentsystemuser.R;
+import com.jubayer.doctorsappinmentsystemuser.models.AppoinmentData;
 
 import java.util.ArrayList;
 

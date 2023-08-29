@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:text="unapproved"
-            android:textColor="@color/black" />
+            android:textColor="@color/accent" />
 
 
     </LinearLayout>

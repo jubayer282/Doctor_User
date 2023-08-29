@@ -54,17 +54,6 @@
         app:layout_constraintStart_toEndOf="@+id/tc_category"
         app:layout_constraintTop_toTopOf="@+id/tc_category" />
 
-    <ImageView
-        android:id="@+id/img_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="60dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_recipe"
-        app:srcCompat="@drawable/ic_edit" />
-
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="0dp"
@@ -96,11 +85,11 @@
         android:id="@+id/img_fvrt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_edit"
-        app:layout_constraintEnd_toStartOf="@+id/img_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_recipe"
         app:srcCompat="@drawable/ic_favourite"
         app:tint="@color/black" />
@@ -109,10 +98,12 @@
         android:id="@+id/appoinmentIv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_edit"
+        android:layout_marginBottom="5dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_edit"
+        app:layout_constraintStart_toEndOf="@+id/img_fvrt"
+        app:layout_constraintTop_toTopOf="@+id/img_fvrt"
         app:srcCompat="@drawable/chat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

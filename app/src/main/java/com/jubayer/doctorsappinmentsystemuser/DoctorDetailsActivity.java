@@ -59,16 +59,16 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                 .into(binding.imgRecipe);
 
         if (recipe.getAuthorId().equalsIgnoreCase(FirebaseAuth.getInstance().getUid())) {
-            binding.imgEdit.setVisibility(View.VISIBLE);
+            /*binding.imgEdit.setVisibility(View.VISIBLE);*/
         } else {
-            binding.imgEdit.setVisibility(View.GONE);
+            /*binding.imgEdit.setVisibility(View.GONE);*/
         }
-        binding.imgEdit.setOnClickListener(view -> {
+        /*binding.imgEdit.setOnClickListener(view -> {
             Intent intent = new Intent(binding.getRoot().getContext(), AddDoctorActivity.class);
             intent.putExtra("recipe", recipe);
             intent.putExtra("isEdit", true);
             binding.getRoot().getContext().startActivity(intent);
-        });
+        });*/
         checkFavourite(recipe);
         binding.imgFvrt.setOnClickListener(view -> {
             favouriteRecipe(recipe);
