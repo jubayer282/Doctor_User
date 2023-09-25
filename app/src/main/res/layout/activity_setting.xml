@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="20dp"
-        android:text="@string/satisfy_your_cravings_nwith_just_a_tap_recipe_app"
+        android:text="@string/satisfy_with_us_and_tap_a_ndoctor_s_appointment_system"
         android:textColor="@color/primaryDark"
         android:textSize="24sp"
         android:fontFamily="@font/poppins_bold"

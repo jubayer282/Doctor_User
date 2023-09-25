@@ -9,9 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jubayer.doctorsappinmentsystemuser.models.AppoinmentData;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class GetAppoinmentActivity extends AppCompatActivity {
 
@@ -50,15 +54,22 @@ public class GetAppoinmentActivity extends AppCompatActivity {
 
         String name = nameEt.getText().toString().trim();
         String phone = mobileEt.getText().toString().trim();
-        String time = timeEt.getText().toString().trim();
+        //String time = timeEt.getText().toString().trim();
         String day = dayEt.getText().toString().trim();
         String status = unapprove.getText().toString().trim();
 
 
         if (!name.isEmpty() && !phone.isEmpty()) {
 
+            Calendar calForDate = Calendar.getInstance();
+            SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
+            String date = currentDate.format(calForDate.getTime());
+
+            Calendar calForTime = Calendar.getInstance();
+            SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
+            String time = currentTime.format(calForTime.getTime());
             String userId = databaseReference.push().getKey();
-            AppoinmentData appoinmentData = new AppoinmentData(name, phone, time, day, status);
+            AppoinmentData appoinmentData = new AppoinmentData(name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid());
             databaseReference.child(userId).setValue(appoinmentData);
 
             Toast.makeText(this, "Appointment request complete", Toast.LENGTH_SHORT).show();

@@ -15,13 +15,13 @@ import com.jubayer.doctorsappinmentsystemuser.models.AppoinmentData;
 import java.util.ArrayList;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.MyHolder> {
-
-    ArrayList<AppoinmentData> list;
     Context context;
+    ArrayList<AppoinmentData> list;
 
-    public AppointmentAdapter(ArrayList<AppoinmentData> list, Context context) {
-        this.list = list;
+
+    public AppointmentAdapter(Context context, ArrayList<AppoinmentData> list) {
         this.context = context;
+        this.list = list;
     }
 
     @NonNull
