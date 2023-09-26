@@ -44,7 +44,9 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         binding.appoinmentIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DoctorDetailsActivity.this, GetAppoinmentActivity.class));
+                Intent intent = new Intent(DoctorDetailsActivity.this, GetAppoinmentActivity.class);
+                intent.putExtra("dr_name", binding.tvName.getText().toString().trim());
+                startActivity(intent);
             }
         });
 /*

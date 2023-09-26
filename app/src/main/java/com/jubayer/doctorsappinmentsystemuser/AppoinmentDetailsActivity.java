@@ -28,7 +28,7 @@ public class AppoinmentDetailsActivity extends AppCompatActivity {
     ProgressBar progressBar;
     DatabaseReference reference;
 
-    ArrayList <AppoinmentData> model;
+    ArrayList<AppoinmentData> model;
 
     AppointmentAdapter adapter;
 
@@ -55,30 +55,6 @@ public class AppoinmentDetailsActivity extends AppCompatActivity {
         /*database child and get data from database*/
         reference = FirebaseDatabase.getInstance().getReference().child("appointment");
 
-
-        /*data view on firebase database get data from on reference*/
-       /* reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                    progressBar.setVisibility(View.GONE);
-
-                    AppoinmentData govtModel = dataSnapshot.getValue(AppoinmentData.class);
-                    model.add(0, govtModel);
-                }
-
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
         loadData();
 
     }
@@ -91,18 +67,24 @@ public class AppoinmentDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 model = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
+                    progressBar.setVisibility(View.VISIBLE);
                     Toast.makeText(AppoinmentDetailsActivity.this, "No Data Found", Toast.LENGTH_SHORT).show();
                 } else {
+
                     recyclerView.setVisibility(View.VISIBLE);
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                    {
                         AppoinmentData data = snapshot.getValue(AppoinmentData.class);
                         model.add(0, data);
-
                     }
+
+                    /*data visible code*/
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(AppoinmentDetailsActivity.this));
                     adapter = new AppointmentAdapter(AppoinmentDetailsActivity.this, model);
                     recyclerView.setAdapter(adapter);
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(AppoinmentDetailsActivity.this, "Data Found", Toast.LENGTH_SHORT).show();
                 }
 

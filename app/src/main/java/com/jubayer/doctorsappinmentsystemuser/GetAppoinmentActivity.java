@@ -21,9 +21,8 @@ public class GetAppoinmentActivity extends AppCompatActivity {
 
     TextInputEditText nameEt, timeEt, mobileEt, dayEt;
     Button submitBtn;
-
-    TextView unapprove;
-
+    TextView unapprove, dr_nameTv ;
+    String drname;
     private DatabaseReference databaseReference;
 
     @Override
@@ -38,6 +37,11 @@ public class GetAppoinmentActivity extends AppCompatActivity {
         mobileEt = findViewById(R.id.phoneEt);
         dayEt = findViewById(R.id.dayEt);
         unapprove = findViewById(R.id.unapprove);
+        dr_nameTv = findViewById(R.id.dr_nameTv);
+
+        drname = getIntent().getStringExtra("dr_name");
+
+        dr_nameTv.setText(drname);
 
         submitBtn = findViewById(R.id.submitBtn);
 
@@ -69,7 +73,8 @@ public class GetAppoinmentActivity extends AppCompatActivity {
             SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
             String time = currentTime.format(calForTime.getTime());
             String userId = databaseReference.push().getKey();
-            AppoinmentData appoinmentData = new AppoinmentData(name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+            AppoinmentData appoinmentData = new AppoinmentData(name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid(), drname);
             databaseReference.child(userId).setValue(appoinmentData);
 
             Toast.makeText(this, "Appointment request complete", Toast.LENGTH_SHORT).show();
