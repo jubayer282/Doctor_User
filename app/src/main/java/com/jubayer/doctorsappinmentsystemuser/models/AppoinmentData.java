@@ -2,12 +2,12 @@ package com.jubayer.doctorsappinmentsystemuser.models;
 
 public class AppoinmentData {
 
-    String name, mobile, time, day, status, date, uid;
+    String name, mobile, time, day, status, date, uid, drname;
 
     public AppoinmentData() {
     }
 
-    public AppoinmentData(String name, String mobile, String time, String day, String status, String date, String uid) {
+    public AppoinmentData(String name, String mobile, String time, String day, String status, String date, String uid, String drname) {
         this.name = name;
         this.mobile = mobile;
         this.time = time;
@@ -15,6 +15,7 @@ public class AppoinmentData {
         this.status = status;
         this.date = date;
         this.uid = uid;
+        this.drname = drname;
     }
 
     public String getName() {
@@ -71,5 +72,13 @@ public class AppoinmentData {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getDrname() {
+        return drname;
+    }
+
+    public void setDrname(String drname) {
+        this.drname = drname;
     }
 }

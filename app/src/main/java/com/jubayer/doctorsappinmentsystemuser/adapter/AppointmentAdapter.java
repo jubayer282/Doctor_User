@@ -43,6 +43,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         holder.timeTv.setText("Appointment Time: "+data.getTime());
         holder.dayTv.setText("Day of Week: "+data.getDay());
         holder.statusTv.setText("Status: "+data.getStatus());
+        holder.drnameTv.setText("Dr. Name: "+data.getDrname());
 
     }
 
@@ -53,7 +54,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView nameTv, moblieTv, timeTv, dayTv, statusTv;
+        TextView nameTv, moblieTv, timeTv, dayTv, statusTv, drnameTv;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,7 +64,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             timeTv = itemView.findViewById(R.id.timeTv);
             dayTv = itemView.findViewById(R.id.dayTv);
             statusTv = itemView.findViewById(R.id.statusTv);
-
+            drnameTv = itemView.findViewById(R.id.drnameTv);
 
         }
     }
