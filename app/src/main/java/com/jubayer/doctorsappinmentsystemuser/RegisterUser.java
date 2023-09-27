@@ -139,7 +139,7 @@ public class RegisterUser extends AppCompatActivity {
 
     private void registerUer() {
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("UserData");
 
         final FirebaseUser user = auth.getCurrentUser();
 
@@ -182,7 +182,7 @@ public class RegisterUser extends AppCompatActivity {
 
     private void signUpUser(FirebaseUser user, String nameStr, String emailStr, String passStr) {
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("UserData");
        auth.createUserWithEmailAndPassword(emailStr, passStr).addOnCompleteListener(task -> {
            if (task.isSuccessful())
            {
