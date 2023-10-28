@@ -197,7 +197,7 @@ public class AddDoctorActivity extends AppCompatActivity {
 
     private void saveDataInDatabase(Doctor recipe, String url) {
         recipe.setImage(url);
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Recipes");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctors");
         if (isEdit) {
             reference.child(recipe.getId()).setValue(recipe).addOnCompleteListener(task -> {
                 dialog.dismiss();

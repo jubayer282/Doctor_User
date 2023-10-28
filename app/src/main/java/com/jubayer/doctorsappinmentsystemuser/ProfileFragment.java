@@ -145,7 +145,7 @@ private User user;
         binding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.rvProfile.setAdapter(new DoctorAdapter());
        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-       reference.child("Recipes").orderByChild("authorId").equalTo(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+       reference.child("Doctors").orderByChild("authorId").equalTo(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Doctor> recipes = new ArrayList<>();

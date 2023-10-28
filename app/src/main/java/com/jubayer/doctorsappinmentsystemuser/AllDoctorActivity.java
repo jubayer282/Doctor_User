@@ -32,7 +32,7 @@ public class AllDoctorActivity extends AppCompatActivity {
         binding = ActivityAllDoctorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        reference = FirebaseDatabase.getInstance().getReference("Recipes");
+        reference = FirebaseDatabase.getInstance().getReference("Doctors");
         binding.rvRecipes.setLayoutManager(new GridLayoutManager(this, 2));
         binding.rvRecipes.setAdapter(new DoctorAdapter());
         String type = getIntent().getStringExtra("type");

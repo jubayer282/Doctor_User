@@ -101,7 +101,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
     }
 
     private void updateDateWithFireBase(String id) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipes");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Doctors");
         reference.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

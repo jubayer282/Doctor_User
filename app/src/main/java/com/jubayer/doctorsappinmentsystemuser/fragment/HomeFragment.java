@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.jubayer.doctorsappinmentsystemuser.AddDoctorActivity;
 import com.jubayer.doctorsappinmentsystemuser.AllDoctorActivity;
 import com.jubayer.doctorsappinmentsystemuser.HorizontalDoctorAdapter;
+import com.jubayer.doctorsappinmentsystemuser.LiveChatBotActivity;
 import com.jubayer.doctorsappinmentsystemuser.SettingActivity;
 import com.jubayer.doctorsappinmentsystemuser.databinding.FragmentHomeBinding;
 import com.jubayer.doctorsappinmentsystemuser.models.Doctor;
@@ -68,6 +69,8 @@ public class HomeFragment extends Fragment {
         });
 
         binding.btnSetting.setOnClickListener(view12 -> startActivity(new Intent(requireContext(), SettingActivity.class)));
+
+        binding.imgLiveChat.setOnClickListener(view13 -> startActivity(new Intent(getContext(), LiveChatBotActivity.class)));
     }
 
     private void performSearch() {
@@ -80,7 +83,7 @@ public class HomeFragment extends Fragment {
 
     private void loadRecipes() {
         // we wil load recipes from our database
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipes");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Doctors");
        /* reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

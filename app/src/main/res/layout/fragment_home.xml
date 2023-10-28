@@ -150,4 +150,15 @@
         android:visibility="gone"
         />
 
+    <ImageView
+        android:id="@+id/img_liveChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/chat"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_setting"
+        app:layout_constraintEnd_toStartOf="@+id/btn_setting"
+        app:layout_constraintTop_toTopOf="@+id/btn_setting"
+        app:tint="@color/black" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

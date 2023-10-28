@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
 
     private void loadRecipes() {
         // we wil load recipes from our database
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipes");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Doctors");
        /* reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
