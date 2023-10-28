@@ -53,38 +53,38 @@ public class AddDoctorActivity extends AppCompatActivity {
         loadCategories();
 
         // user data input
-        binding.btnAddRecipe.setOnClickListener(view ->
+        binding.btnAddDoctor.setOnClickListener(view ->
                 getData()
         );
-        binding.imgRecipe.setOnClickListener(view ->
+        binding.imgDoctor.setOnClickListener(view ->
                 pickImage()
         );
 
         // for edit purpose
         isEdit = getIntent().getBooleanExtra("isEdit", false);
         if (isEdit) {
-            editRecipe();
+            editDoctor();
         }
     }
 
-    private void editRecipe() {
-        Doctor recipe = (Doctor) getIntent().getSerializableExtra("recipe");
+    private void editDoctor() {
+        Doctor doctor = (Doctor) getIntent().getSerializableExtra("doctor");
         isImageSelected = true;
 
-        binding.etRecipeName.setText(recipe.getName());
-        binding.etDescription.setText(recipe.getDescription());
-        binding.etCookingTime.setText(recipe.getTime());
-        binding.etCategory.setText(recipe.getCategory());
-        binding.etCalories.setText(recipe.getDate());
+        binding.etDoctorName.setText(doctor.getName());
+        binding.etDescription.setText(doctor.getDescription());
+        binding.etSheduleTime.setText(doctor.getTime());
+        binding.etCategory.setText(doctor.getCategory());
+        binding.etDate.setText(doctor.getDate());
 
 
         Glide
                 .with(binding.getRoot().getContext())
-                .load(recipe.getImage())
+                .load(doctor.getImage())
                 .centerCrop()
                 .placeholder(R.drawable.placeholder)
-                .into(binding.imgRecipe);
-        binding.btnAddRecipe.setText("Update Doctor");
+                .into(binding.imgDoctor);
+        binding.btnAddDoctor.setText("Update Doctor");
     }
 
     private void loadCategories() {
@@ -118,8 +118,8 @@ public class AddDoctorActivity extends AppCompatActivity {
     private void pickImage() {
         PickImageDialog.build(new PickSetup()).show(AddDoctorActivity.this).setOnPickResult(r -> {
             Log.e("ProfileFragment", "onPickResult: " + r.getUri());
-            binding.imgRecipe.setImageBitmap(r.getBitmap());
-            binding.imgRecipe.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            binding.imgDoctor.setImageBitmap(r.getBitmap());
+            binding.imgDoctor.setScaleType(ImageView.ScaleType.CENTER_CROP);
             isImageSelected = true;
         }).setOnPickCancel(() -> Toast.makeText(AddDoctorActivity.this, "Cancelled", Toast.LENGTH_SHORT).show());
     }
@@ -127,22 +127,22 @@ public class AddDoctorActivity extends AppCompatActivity {
     private void getData() {
 
         //Fetch all the data from the user in variables
-        String recipeName = Objects.requireNonNull(binding.etRecipeName.getText()).toString();
-        String recipeDescription = Objects.requireNonNull(binding.etDescription.getText()).toString();
-        String cookingTime = Objects.requireNonNull(binding.etCookingTime.getText()).toString();
-        String recipeCategory = binding.etCategory.getText().toString();
-        String date = Objects.requireNonNull(binding.etCalories.getText()).toString();
+        String doctorName = Objects.requireNonNull(binding.etDoctorName.getText()).toString();
+        String doctorDescription = Objects.requireNonNull(binding.etDescription.getText()).toString();
+        String sheduleTime = Objects.requireNonNull(binding.etSheduleTime.getText()).toString();
+        String doctorCategory = binding.etCategory.getText().toString();
+        String date = Objects.requireNonNull(binding.etDate.getText()).toString();
         // we will validate the data
-        if (recipeName.isEmpty()) {
-            binding.etRecipeName.setError("Please enter Doctor Name");
-        } else if (recipeDescription.isEmpty()) {
+        if (doctorName.isEmpty()) {
+            binding.etDoctorName.setError("Please enter Doctor Name");
+        } else if (doctorDescription.isEmpty()) {
             binding.etDescription.setError("Please enter Doctor Description");
-        } else if (cookingTime.isEmpty()) {
-            binding.etCookingTime.setError("Please enter Cooking Time");
-        } else if (recipeCategory.isEmpty()) {
+        } else if (sheduleTime.isEmpty()) {
+            binding.etSheduleTime.setError("Please enter Cooking Time");
+        } else if (doctorCategory.isEmpty()) {
             binding.etCategory.setError("Please enter Doctor Category");
         } else if (date.isEmpty()) {
-            binding.etCalories.setError("Please enter Calories");
+            binding.etDate.setError("Please enter Calories");
         } else if (!isImageSelected) {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
         } else {
@@ -151,19 +151,19 @@ public class AddDoctorActivity extends AppCompatActivity {
             dialog.setCancelable(false);
             dialog.show();
             //created a recipe object will auto generate
-            Doctor recipe = new Doctor(recipeName, recipeDescription, cookingTime, recipeCategory, date, "", FirebaseAuth.getInstance().getUid());
+            Doctor doctor = new Doctor(doctorName, doctorDescription, sheduleTime, doctorCategory, date, "", FirebaseAuth.getInstance().getUid());
             // we will uploaded the image to the firebase storage
-            uploadImage(recipe);
+            uploadImage(doctor);
         }
     }
 
-    private String uploadImage(Doctor recipe) {
+    private String uploadImage(Doctor doctor) {
         // we will uploaded the image to the firebase storage
         final String[] url = {""};
-        binding.imgRecipe.setDrawingCacheEnabled(true);
-        Bitmap bitmap = ((BitmapDrawable) binding.imgRecipe.getDrawable()).getBitmap();
-        binding.imgRecipe.setDrawingCacheEnabled(false);
-        String id = isEdit ? recipe.getId() : currentTimeMillis() + "";
+        binding.imgDoctor.setDrawingCacheEnabled(true);
+        Bitmap bitmap = ((BitmapDrawable) binding.imgDoctor.getDrawable()).getBitmap();
+        binding.imgDoctor.setDrawingCacheEnabled(false);
+        String id = isEdit ? doctor.getId() : currentTimeMillis() + "";
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("images/" + id + "_recipe.jpg");
 
@@ -184,7 +184,7 @@ public class AddDoctorActivity extends AppCompatActivity {
                 // download url in firebase database
                 url[0] = downloadUri.toString();
                 Toast.makeText(AddDoctorActivity.this, "Image uploaded Successfully", Toast.LENGTH_SHORT).show();
-                saveDataInDatabase(recipe, url[0]);
+                saveDataInDatabase(doctor, url[0]);
             } else {
                 // Handle failures
                 Toast.makeText(this, "Error uploading image", Toast.LENGTH_SHORT).show();
@@ -195,11 +195,11 @@ public class AddDoctorActivity extends AppCompatActivity {
         return url[0];
     }
 
-    private void saveDataInDatabase(Doctor recipe, String url) {
-        recipe.setImage(url);
+    private void saveDataInDatabase(Doctor doctor, String url) {
+        doctor.setImage(url);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctors");
         if (isEdit) {
-            reference.child(recipe.getId()).setValue(recipe).addOnCompleteListener(task -> {
+            reference.child(doctor.getId()).setValue(doctor).addOnCompleteListener(task -> {
                 dialog.dismiss();
                 if (task.isSuccessful()) {
                     Toast.makeText(this, "Doctor Updated Successfully", Toast.LENGTH_SHORT).show();
@@ -210,16 +210,16 @@ public class AddDoctorActivity extends AppCompatActivity {
             });
         } else {
             String id = reference.push().getKey();
-            recipe.setId(id);
+            doctor.setId(id);
             if (id != null) {
-                reference.child(id).setValue(recipe).addOnCompleteListener(task -> {
+                reference.child(id).setValue(doctor).addOnCompleteListener(task -> {
                     dialog.dismiss();
                     if (task.isSuccessful()) {
                         Toast.makeText(this, "Doctor Added Successfully", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
                         dialog.dismiss();
-                        Toast.makeText(this, "Error in adding recipe", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Error in adding doctor", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

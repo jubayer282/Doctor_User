@@ -33,33 +33,33 @@ public class AllDoctorActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         reference = FirebaseDatabase.getInstance().getReference("Doctors");
-        binding.rvRecipes.setLayoutManager(new GridLayoutManager(this, 2));
-        binding.rvRecipes.setAdapter(new DoctorAdapter());
+        binding.rvDoctors.setLayoutManager(new GridLayoutManager(this, 2));
+        binding.rvDoctors.setAdapter(new DoctorAdapter());
         String type = getIntent().getStringExtra("type");
         if (type.equalsIgnoreCase("category")) {
             filterByCategory();
         } else if (type.equalsIgnoreCase("search")) {
-            loadByRecipes();
+            loadByDoctors();
         } else {
-            loadAllRecipes();
+            loadAllDoctors();
         }
     }
 
-    private void loadByRecipes() {
-        // Search recipe name
+    private void loadByDoctors() {
+        // Search doctor name
         String query = getIntent().getStringExtra("query");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Doctor> recipes = new ArrayList<>();
+                List<Doctor> doctors = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor recipe = dataSnapshot.getValue(Doctor.class);
-                    if (recipe.getName().toLowerCase().contains(query.toLowerCase()))
-                      recipes.add(recipe);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    if (doctor.getName().toLowerCase().contains(query.toLowerCase()))
+                        doctors.add(doctor);
                 }
-                DoctorAdapter adapter = (DoctorAdapter) binding.rvRecipes.getAdapter();
+                DoctorAdapter adapter = (DoctorAdapter) binding.rvDoctors.getAdapter();
                 if (adapter != null) {
-                    adapter.setRecipeList(recipes);
+                    adapter.setDoctorList(doctors);
                 }
 
             }
@@ -72,20 +72,20 @@ public class AllDoctorActivity extends AppCompatActivity {
 
     }
 
-    private void loadAllRecipes() {
-        // load all recipes
+    private void loadAllDoctors() {
+        // load all doctors
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Doctor> recipes = new ArrayList<>();
+                List<Doctor> doctors = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor recipe = dataSnapshot.getValue(Doctor.class);
-                        recipes.add(recipe);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    doctors.add(doctor);
                 }
-                Collections.shuffle(recipes);
-                DoctorAdapter adapter = (DoctorAdapter) binding.rvRecipes.getAdapter();
+                Collections.shuffle(doctors);
+                DoctorAdapter adapter = (DoctorAdapter) binding.rvDoctors.getAdapter();
                 if (adapter != null) {
-                    adapter.setRecipeList(recipes);
+                    adapter.setDoctorList(doctors);
                 }
 
             }
@@ -98,19 +98,19 @@ public class AllDoctorActivity extends AppCompatActivity {
     }
 
     private void filterByCategory() {
-        // Filter recipes by category
+        // Filter doctors by category
         String category = getIntent().getStringExtra("category");
         reference.orderByChild("category").equalTo(category).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Doctor> recipes = new ArrayList<>();
+                List<Doctor> doctors = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor recipe = dataSnapshot.getValue(Doctor.class);
-                    recipes.add(recipe);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    doctors.add(doctor);
                 }
-                DoctorAdapter adapter = (DoctorAdapter) binding.rvRecipes.getAdapter();
+                DoctorAdapter adapter = (DoctorAdapter) binding.rvDoctors.getAdapter();
                 if (adapter != null) {
-                    adapter.setRecipeList(recipes);
+                    adapter.setDoctorList(doctors);
                 }
             }
 

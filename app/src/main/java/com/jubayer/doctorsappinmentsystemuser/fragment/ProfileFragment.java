@@ -55,7 +55,7 @@ private User user;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadProfile();
-        loadUserRecipes();
+        loadUserDoctors();
         init();
     }
 
@@ -143,19 +143,19 @@ private User user;
         });
     }
 
-    private void loadUserRecipes() {
+    private void loadUserDoctors() {
         binding.rvProfile.setLayoutManager(new GridLayoutManager(getContext(), 2));
         binding.rvProfile.setAdapter(new DoctorAdapter());
        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
        reference.child("Doctors").orderByChild("authorId").equalTo(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Doctor> recipes = new ArrayList<>();
+                List<Doctor> doctors = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor recipe = dataSnapshot.getValue(Doctor.class);
-                    recipes.add(recipe);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    doctors.add(doctor);
                 }
-               ((DoctorAdapter) Objects.requireNonNull(binding.rvProfile.getAdapter())).setRecipeList(recipes);
+               ((DoctorAdapter) Objects.requireNonNull(binding.rvProfile.getAdapter())).setDoctorList(doctors);
            }
 
            @Override

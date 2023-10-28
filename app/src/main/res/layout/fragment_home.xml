@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_favorite_meal"
+        android:id="@+id/rv_favorite_doctor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -92,8 +92,8 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/rv_favorite_meal"
-        app:layout_constraintTop_toBottomOf="@+id/rv_favorite_meal" />
+        app:layout_constraintStart_toStartOf="@+id/rv_favorite_doctor"
+        app:layout_constraintTop_toBottomOf="@+id/rv_favorite_doctor" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_populars"

@@ -17,8 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jubayer.doctorsappinmentsystemuser.databinding.ActivityDoctorDetailsBinding;
 import com.jubayer.doctorsappinmentsystemuser.models.Doctor;
-import com.jubayer.doctorsappinmentsystemuser.room.FavouriteRecipe;
-import com.jubayer.doctorsappinmentsystemuser.room.RecipeRepository;
+import com.jubayer.doctorsappinmentsystemuser.room.FavouriteDoctor;
+import com.jubayer.doctorsappinmentsystemuser.room.DoctorRepository;
 
 
 public class DoctorDetailsActivity extends AppCompatActivity {
@@ -33,12 +33,12 @@ public class DoctorDetailsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Doctor recipe = (Doctor) getIntent().getSerializableExtra("recipe");
-        binding.tvName.setText(recipe.getName());
-        binding.tcCategory.setText(recipe.getCategory());
-        binding.tvDescription.setText(recipe.getDescription());
-        binding.tvTime.setText("Time: " + recipe.getTime());
-        binding.tvCalories.setText("Schedule: " + recipe.getDate());
+        Doctor doctor = (Doctor) getIntent().getSerializableExtra("doctor");
+        binding.tvName.setText(doctor.getName());
+        binding.tcCategory.setText(doctor.getCategory());
+        binding.tvDescription.setText(doctor.getDescription());
+        binding.tvTime.setText("Time: " + doctor.getTime());
+        binding.tvDate.setText("Schedule: " + doctor.getDate());
 
         /*appoinment button*/
         binding.appoinmentIv.setOnClickListener(new View.OnClickListener() {
@@ -55,12 +55,12 @@ public class DoctorDetailsActivity extends AppCompatActivity {
 
         Glide
                 .with(DoctorDetailsActivity.this)
-                .load(recipe.getImage())
+                .load(doctor.getImage())
                 .centerCrop()
                 .placeholder(R.mipmap.ic_launcher)
-                .into(binding.imgRecipe);
+                .into(binding.imgDoctor);
 
-        if (recipe.getAuthorId().equalsIgnoreCase(FirebaseAuth.getInstance().getUid())) {
+        if (doctor.getAuthorId().equalsIgnoreCase(FirebaseAuth.getInstance().getUid())) {
             /*binding.imgEdit.setVisibility(View.VISIBLE);*/
         } else {
             /*binding.imgEdit.setVisibility(View.GONE);*/
@@ -71,16 +71,16 @@ public class DoctorDetailsActivity extends AppCompatActivity {
             intent.putExtra("isEdit", true);
             binding.getRoot().getContext().startActivity(intent);
         });*/
-        checkFavourite(recipe);
+        checkFavourite(doctor);
         binding.imgFvrt.setOnClickListener(view -> {
-            favouriteRecipe(recipe);
+            favouriteDoctor(doctor);
         });
-        updateDateWithFireBase(recipe.getId());
+        updateDateWithFireBase(doctor.getId());
     }
 
-    private void checkFavourite(Doctor recipe) {
-        RecipeRepository repository = new RecipeRepository(getApplication());
-        boolean isFavourite = repository.isFavourite(recipe.getId());
+    private void checkFavourite(Doctor doctor) {
+        DoctorRepository repository = new DoctorRepository(getApplication());
+        boolean isFavourite = repository.isFavourite(doctor.getId());
         if (isFavourite) {
             binding.imgFvrt.setColorFilter(getResources().getColor(R.color.accent));
         } else {
@@ -88,14 +88,14 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void favouriteRecipe(Doctor recipe) {
-        RecipeRepository repository = new RecipeRepository(getApplication());
+    private void favouriteDoctor(Doctor recipe) {
+        DoctorRepository repository = new DoctorRepository(getApplication());
         boolean isFavourite = repository.isFavourite(recipe.getId());
         if (isFavourite) {
-            repository.delete(new FavouriteRecipe(recipe.getId()));
+            repository.delete(new FavouriteDoctor(recipe.getId()));
             binding.imgFvrt.setColorFilter(getResources().getColor(R.color.black));
         } else {
-            repository.insert(new FavouriteRecipe(recipe.getId()));
+            repository.insert(new FavouriteDoctor(recipe.getId()));
             binding.imgFvrt.setColorFilter(getResources().getColor(R.color.accent));
         }
     }
@@ -105,18 +105,18 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         reference.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Doctor recipe = snapshot.getValue(Doctor.class);
-                binding.tvName.setText(recipe.getName());
-                binding.tcCategory.setText(recipe.getCategory());
-                binding.tvDescription.setText(recipe.getDescription());
-                binding.tvCalories.setText("Schedule: " + recipe.getDate());
+                Doctor doctor = snapshot.getValue(Doctor.class);
+                binding.tvName.setText(doctor.getName());
+                binding.tcCategory.setText(doctor.getCategory());
+                binding.tvDescription.setText(doctor.getDescription());
+                binding.tvDate.setText("Schedule: " + doctor.getDate());
 
                 Glide
                         .with(DoctorDetailsActivity.this)
-                        .load(recipe.getImage())
+                        .load(doctor.getImage())
                         .centerCrop()
                         .placeholder(R.mipmap.ic_launcher)
-                        .into(binding.imgRecipe);
+                        .into(binding.imgDoctor);
             }
 
             @Override

@@ -7,7 +7,7 @@
     tools:context=".DoctorDetailsActivity">
 
     <ImageView
-        android:id="@+id/img_recipe"
+        android:id="@+id/img_doctor"
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:scaleType="centerCrop"
@@ -22,14 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Recipe Title"
+        android:text="Doctor Title"
         android:textColor="@color/black"
-        android:textSize="23sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/img_fvrt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_recipe" />
+        app:layout_constraintTop_toBottomOf="@+id/img_doctor" />
 
     <TextView
         android:id="@+id/tc_category"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <TextView
-        android:id="@+id/tv_calories"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -75,22 +75,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="5dp"
         android:text="Time"
         app:layout_constraintBottom_toTopOf="@+id/tv_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_calories"
-        app:layout_constraintTop_toBottomOf="@+id/img_recipe" />
+        app:layout_constraintStart_toEndOf="@+id/tv_date"
+        app:layout_constraintTop_toBottomOf="@+id/img_doctor" />
 
     <ImageView
         android:id="@+id/img_fvrt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="230dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="50dp"
         android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_recipe"
+        app:layout_constraintTop_toBottomOf="@+id/img_doctor"
         app:srcCompat="@drawable/ic_favourite"
         app:tint="@color/black" />
 
@@ -98,7 +101,8 @@
         android:id="@+id/appoinmentIv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="7dp"
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_time"
         app:layout_constraintEnd_toEndOf="parent"

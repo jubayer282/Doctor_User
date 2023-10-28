@@ -51,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
                     // if user is not logged in
                     startActivity(new Intent(SplashActivity.this, SignIn.class));
                     Toast.makeText(SplashActivity.this, "Welcome to login page", Toast.LENGTH_SHORT).show();
-                    finish();
+                    finishAffinity();
                 }
             }
         };

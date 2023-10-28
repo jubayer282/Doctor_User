@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jubayer.doctorsappinmentsystemuser.AddDoctorActivity;
 import com.jubayer.doctorsappinmentsystemuser.AllDoctorActivity;
-import com.jubayer.doctorsappinmentsystemuser.HorizontalDoctorAdapter;
+import com.jubayer.doctorsappinmentsystemuser.adapter.HorizontalDoctorAdapter;
 import com.jubayer.doctorsappinmentsystemuser.LiveChatBotActivity;
 import com.jubayer.doctorsappinmentsystemuser.SettingActivity;
 import com.jubayer.doctorsappinmentsystemuser.databinding.FragmentHomeBinding;
@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadRecipes();
+        loadDoctors();
 
         binding.etSearch.setOnEditorActionListener((textView, i, keyEvent) -> {
             if (i == EditorInfo.IME_ACTION_SEARCH) {
@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void loadRecipes() {
+    private void loadDoctors() {
         // we wil load recipes from our database
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Doctors");
        /* reference.addValueEventListener(new ValueEventListener() {
@@ -105,13 +105,13 @@ public class HomeFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Doctor> recipes = new ArrayList<>();
+                List<Doctor> doctors = new ArrayList<>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    Doctor recipe = dataSnapshot.getValue(Doctor.class);
-                    recipes.add(recipe);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    doctors.add(doctor);
                 }
-                loadPopularRecipes(recipes);
-                loadFavouriteRecipes(recipes);
+                loadPopularDoctors(doctors);
+                loadFavouriteDoctors(doctors);
             }
 
             @Override
@@ -121,28 +121,28 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void loadPopularRecipes(List<Doctor> recipes) {
-        List<Doctor> popularRecipes = new ArrayList<>();
+    private void loadPopularDoctors(List<Doctor> doctors) {
+        List<Doctor> popularDoctors = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            int random = (int) (Math.random() * recipes.size());
-            popularRecipes.add(recipes.get(random));
+            int random = (int) (Math.random() * doctors.size());
+            popularDoctors.add(doctors.get(random));
         }
         binding.rvPopulars.setAdapter(new HorizontalDoctorAdapter());
         HorizontalDoctorAdapter adapter = (HorizontalDoctorAdapter) binding.rvPopulars.getAdapter();
         if (adapter != null) {
-            adapter.setRecipeList(popularRecipes);
+            adapter.setDoctorList(popularDoctors);
         }
     }
-    private void loadFavouriteRecipes(List<Doctor> recipes) {
-        List<Doctor> favouriteRecipes = new ArrayList<>();
+    private void loadFavouriteDoctors(List<Doctor> doctors) {
+        List<Doctor> favouriteDoctors = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            int random = (int) (Math.random() * recipes.size());
-            favouriteRecipes.add(recipes.get(random));
+            int random = (int) (Math.random() * doctors.size());
+            favouriteDoctors.add(doctors.get(random));
         }
-        binding.rvFavoriteMeal.setAdapter(new HorizontalDoctorAdapter());
-        HorizontalDoctorAdapter adapter = (HorizontalDoctorAdapter) binding.rvFavoriteMeal.getAdapter();
+        binding.rvFavoriteDoctor.setAdapter(new HorizontalDoctorAdapter());
+        HorizontalDoctorAdapter adapter = (HorizontalDoctorAdapter) binding.rvFavoriteDoctor.getAdapter();
         if (adapter != null) {
-            adapter.setRecipeList(favouriteRecipes);
+            adapter.setDoctorList(favouriteDoctors);
         }
 
     }
