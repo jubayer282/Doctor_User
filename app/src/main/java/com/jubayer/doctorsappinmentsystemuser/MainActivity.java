@@ -152,6 +152,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "About_us details here...!!!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(MainActivity.this, About_Us.class));
             onBackPressed();
+        } else if (itemId == R.id.privacypolicy) {
+            Toast.makeText(this, "Policy and Privacy Here...!!!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this, Policy_Privacy.class));
+            onBackPressed();
         }
 
         else if (itemId == R.id.appointment)

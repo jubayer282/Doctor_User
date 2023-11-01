@@ -72,10 +72,11 @@ public class GetAppoinmentActivity extends AppCompatActivity {
             Calendar calForTime = Calendar.getInstance();
             SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
             String time = currentTime.format(calForTime.getTime());
-            String userId = databaseReference.push().getKey();
+            String appointmentId = databaseReference.push().getKey();
 
-            AppoinmentData appoinmentData = new AppoinmentData(name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid(), drname);
-            databaseReference.child(userId).setValue(appoinmentData);
+            AppoinmentData appoinmentData = new AppoinmentData(appointmentId,name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid(), drname);
+
+            databaseReference.child(appointmentId).setValue(appoinmentData);
 
             Toast.makeText(this, "Appointment request complete", Toast.LENGTH_SHORT).show();
 

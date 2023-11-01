@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Policy_Privacy">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/introduction_n_n_this_policy_and_privacy_statement_explains_how_we_collect_use_and_protect_your_personal_information_when_you_use_our_doctors_appointment_system_android_app_n"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/information_we_collect_n_n_we_collect_the_following_information_from_you_when_you_use_our_app_n_n1_personal_information_this_includes_your_name_email_address_phone_number_and_date_of_birth_n2_medical_information_this_includes_your_medical_history_medications_and_other_health_related_information_n3_device_information_this_includes_your_device_s_id_and_device_type_n_n"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/how_we_use_your_information_n_n_we_use_your_information_to_n_1_provide_you_with_our_services_such_as_scheduling_appointments_and_managing_your_medical_records_n2_communicate_with_you_about_your_appointments_and_other_important_information_n3_improve_our_app_and_services_n4_protect_against_fraud_and_abuse_n_n"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How We Share Your Information\n\n\n We only share your information with the following third parties:\n\n1.  Your healthcare providers: We share your medical information with your healthcare providers so that they can provide you with the best possible care.\n2. Third-party service providers: We use third-party service providers to help us operate our app and provide our services. These service providers may have access to your personal information, but they are only authorized to use it for the purposes of providing us with their services.\n3.  Law enforcement: We may share your information with law enforcement if we believe it is necessary to prevent fraud, protect our users, or comply with the law.\n\n"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_security_n_n_we_take_steps_to_protect_your_information_from_unauthorized_access_use_or_disclosure_we_use_industry_standard_encryption_to_protect_your_data_when_it_is_transmitted_and_at_rest_we_also_have_security_measures_in_place_to_protect_our_servers_and_computer_systems_from_unauthorized_access_n_n"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/changes_to_this_policy_n_n_we_may_update_this_policy_from_time_to_time_if_we_make_any_significant_changes_we_will_notify_you_by_email_n_n"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_us_n_nif_you_have_any_questions_about_this_policy_or_our_privacy_practices_please_contact_us_n"
+            android:textColor="@color/black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/developer_jubayer_hossain_ncontact_number_01758860911_n_n"
+            android:textColor="@color/teal_700" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/effective_date_n_n_this_policy_is_effective_as_of_october_31_2023_n_n"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</ScrollView>
