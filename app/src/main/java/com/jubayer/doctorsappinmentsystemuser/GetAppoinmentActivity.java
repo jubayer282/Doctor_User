@@ -21,7 +21,7 @@ public class GetAppoinmentActivity extends AppCompatActivity {
 
     TextInputEditText nameEt, timeEt, mobileEt, dayEt;
     Button submitBtn;
-    TextView unapprove, dr_nameTv ;
+    TextView unapprove, dr_nameTv;
     String drname;
     private DatabaseReference databaseReference;
 
@@ -73,8 +73,11 @@ public class GetAppoinmentActivity extends AppCompatActivity {
             SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
             String time = currentTime.format(calForTime.getTime());
             String appointmentId = databaseReference.push().getKey();
+/*
+            String aID = databaseReference.getRoot().getKey();
+*/
 
-            AppoinmentData appoinmentData = new AppoinmentData(appointmentId,name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid(), drname);
+            AppoinmentData appoinmentData = new AppoinmentData(appointmentId, name, phone, time, day, status, date, FirebaseAuth.getInstance().getCurrentUser().getUid(), drname);
 
             databaseReference.child(appointmentId).setValue(appoinmentData);
 

@@ -82,4 +82,12 @@ public class AppoinmentData {
     public void setDrname(String drname) {
         this.drname = drname;
     }
+
+    public String getaID() {
+        return aID;
+    }
+
+    public void setaID(String aID) {
+        this.aID = aID;
+    }
 }
