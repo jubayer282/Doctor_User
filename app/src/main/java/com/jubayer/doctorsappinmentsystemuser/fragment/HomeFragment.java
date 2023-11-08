@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.jubayer.doctorsappinmentsystemuser.AddDoctorActivity;
 import com.jubayer.doctorsappinmentsystemuser.AllDoctorActivity;
 import com.jubayer.doctorsappinmentsystemuser.adapter.HorizontalDoctorAdapter;
-import com.jubayer.doctorsappinmentsystemuser.LiveChatBotActivity;
+import com.jubayer.doctorsappinmentsystemuser.chatbot.LiveChatBotActivity;
 import com.jubayer.doctorsappinmentsystemuser.SettingActivity;
 import com.jubayer.doctorsappinmentsystemuser.databinding.FragmentHomeBinding;
 import com.jubayer.doctorsappinmentsystemuser.models.Doctor;

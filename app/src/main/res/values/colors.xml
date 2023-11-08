@@ -21,4 +21,10 @@
 
     <color name="blue">#0C1F88</color>
 
+
+    <color name="black_color">#13253D</color>
+    <color name="bot_black_color">#203757</color>
+    <color name="user_black_color">#6965FF</color>
+    <color name="fab_color">#6B6AFF</color>
+
 </resources>

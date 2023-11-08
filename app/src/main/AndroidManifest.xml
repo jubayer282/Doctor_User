@@ -16,6 +16,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.DoctorApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".Policy_Privacy"
@@ -27,7 +28,7 @@
             android:name=".GetAppoinmentActivity"
             android:exported="false" />
         <activity
-            android:name=".LiveChatBotActivity"
+            android:name=".chatbot.LiveChatBotActivity"
             android:exported="false" />
         <activity
             android:name=".About_Us"
