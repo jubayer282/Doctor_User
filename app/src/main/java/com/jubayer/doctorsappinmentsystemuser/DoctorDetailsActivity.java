@@ -29,6 +29,11 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDoctorDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        /*action bar and title name*/
+        getSupportActionBar().setTitle("Doctor Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         init();
     }
 

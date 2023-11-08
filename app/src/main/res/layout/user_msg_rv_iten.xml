@@ -29,7 +29,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_user"/>
+            android:src="@drawable/user"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

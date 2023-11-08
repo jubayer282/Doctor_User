@@ -7,9 +7,23 @@
     android:background="@color/black_color"
     tools:context=".chatbot.LiveChatBotActivity">
 
+<!--
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:text="Welcome to Live Chat. \nIF you have any question then ask Chatbot."/>
+-->
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:id="@+id/idRVChats"
         android:layout_above="@+id/idRLMsg"/>
 
@@ -20,16 +34,19 @@
         android:id="@+id/idRLMsg">
 
         <EditText
+            android:id="@+id/idEditMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Message"
-            android:textColorHint="@color/white"
-            android:id="@+id/idEditMessage"
-            android:textColor="@color/white"
-            android:singleLine="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="3dp"
             android:layout_toLeftOf="@+id/idFABSend"
-            android:layout_margin="3dp"
-            android:layout_centerInParent="true"/>
+            android:hint="Enter Message"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

@@ -35,6 +35,10 @@ public class LiveChatBotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_chat_bot);
 
+        /*action bar and title name*/
+        getSupportActionBar().setTitle("Live Chatbot");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         chatsRV = findViewById(R.id.idRVChats);
         userMsgEdit = findViewById(R.id.idEditMessage);
         sendMsgFAB = findViewById(R.id.idFABSend);

@@ -26,8 +26,9 @@ public class DeveloperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_developer);
 
-        /*Set action bar Title */
+        /*action bar and title name*/
         getSupportActionBar().setTitle("Developer List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         /*jubayer hossain view*/

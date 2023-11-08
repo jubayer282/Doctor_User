@@ -18,7 +18,11 @@ public class About_Us extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
-        getSupportActionBar().setTitle("About us of DAS");
+
+        /*action bar and title name*/
+        getSupportActionBar().setTitle("About Us");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         map = findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
             @Override

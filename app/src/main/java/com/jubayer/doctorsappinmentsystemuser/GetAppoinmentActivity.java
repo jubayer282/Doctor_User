@@ -30,6 +30,10 @@ public class GetAppoinmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_appoinment);
 
+        /*action bar and title name*/
+        getSupportActionBar().setTitle("Appointment");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("appointment");
 
         nameEt = findViewById(R.id.nameEt);

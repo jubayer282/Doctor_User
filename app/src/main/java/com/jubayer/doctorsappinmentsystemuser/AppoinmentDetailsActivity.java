@@ -38,6 +38,10 @@ public class AppoinmentDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appoinment_details);
 
+        /*action bar and title name*/
+        getSupportActionBar().setTitle("Appointment Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
